@@ -107,6 +107,7 @@
 		64AF2BD318CAD2B0006106D7 /* MiniatureTwitter */ = {
 			isa = PBXGroup;
 			children = (
+				64AF2BFC18CAD2BE006106D7 /* ViewControllers */,
 				64AF2BDC18CAD2B0006106D7 /* AppDelegate.h */,
 				64AF2BDD18CAD2B0006106D7 /* AppDelegate.m */,
 				64AF2BDF18CAD2B0006106D7 /* Images.xcassets */,
@@ -142,6 +143,13 @@
 				64AF2BEF18CAD2B0006106D7 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		64AF2BFC18CAD2BE006106D7 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = ViewControllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
