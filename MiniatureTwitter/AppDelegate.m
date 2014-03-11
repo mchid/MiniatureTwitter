@@ -91,7 +91,7 @@
     
     SearchViewController *searchController = [[SearchViewController alloc] init];
     UINavigationController *navSearchController = [[UINavigationController alloc] initWithRootViewController:searchController];
-    [navSearchController.tabBarItem setTitle:@"Search"];
+    [navSearchController.tabBarItem setTitle:@"Follow"];
     
     UITabBarController *tabController = [[UITabBarController alloc] init];
     [tabController setViewControllers:[NSArray arrayWithObjects:navFeedController,navSearchController, nil] animated:YES];

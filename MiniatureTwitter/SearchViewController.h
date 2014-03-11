@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SearchViewController : UIViewController
+@interface SearchViewController : UIViewController<UITextFieldDelegate>
+
+@property (nonatomic, assign) id currentResponder;
 
 @end

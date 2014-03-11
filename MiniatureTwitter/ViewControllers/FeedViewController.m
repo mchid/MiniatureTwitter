@@ -66,7 +66,9 @@
 }
 
 - (void)showNewStatusView{
-    
+    SLComposeViewController *composeViewController = [SLComposeViewController composeViewControllerForServiceType:SLServiceTypeTwitter];
+    [composeViewController setInitialText:@"Edit your tweet here."];
+    [self presentViewController:composeViewController animated:YES completion:nil];
 }
 
 - (void)refreshFeed{
