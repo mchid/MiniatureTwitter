@@ -7,9 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		645E24D718CD49A600BB657D /* TabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 645E24D618CD49A600BB657D /* TabBarController.m */; };
 		645E24DA18CD4B8100BB657D /* FeedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 645E24D918CD4B8100BB657D /* FeedViewController.m */; };
 		645E24DD18CD4B9100BB657D /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 645E24DC18CD4B9100BB657D /* SearchViewController.m */; };
+		645E24E818CD5FA900BB657D /* Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 645E24E718CD5FA900BB657D /* Helper.m */; };
+		647F721618CEA0ED00741C45 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 647F721518CEA0ED00741C45 /* User.m */; };
+		647F721918CEA10300741C45 /* Feed.m in Sources */ = {isa = PBXBuildFile; fileRef = 647F721818CEA10300741C45 /* Feed.m */; };
 		64AF2BCE18CAD2B0006106D7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64AF2BCD18CAD2B0006106D7 /* Foundation.framework */; };
 		64AF2BD018CAD2B0006106D7 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64AF2BCF18CAD2B0006106D7 /* CoreGraphics.framework */; };
 		64AF2BD218CAD2B0006106D7 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64AF2BD118CAD2B0006106D7 /* UIKit.framework */; };
@@ -22,7 +24,6 @@
 		64AF2BE918CAD2B0006106D7 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64AF2BD118CAD2B0006106D7 /* UIKit.framework */; };
 		64AF2BF118CAD2B0006106D7 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 64AF2BEF18CAD2B0006106D7 /* InfoPlist.strings */; };
 		64AF2BF318CAD2B0006106D7 /* MiniatureTwitterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 64AF2BF218CAD2B0006106D7 /* MiniatureTwitterTests.m */; };
-		64AF2BFF18CAD4D8006106D7 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 64AF2BFE18CAD4D8006106D7 /* LoginViewController.m */; };
 		64AF2C0118CAE2C1006106D7 /* Twitter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64AF2C0018CAE2C1006106D7 /* Twitter.framework */; };
 		64AF2C0318CAE475006106D7 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64AF2C0218CAE475006106D7 /* Social.framework */; };
 		64AF2C0518CAE47C006106D7 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64AF2C0418CAE47C006106D7 /* Accounts.framework */; };
@@ -39,12 +40,16 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		645E24D518CD49A600BB657D /* TabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TabBarController.h; path = ViewControllers/TabBarController.h; sourceTree = "<group>"; };
-		645E24D618CD49A600BB657D /* TabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TabBarController.m; path = ViewControllers/TabBarController.m; sourceTree = "<group>"; };
 		645E24D818CD4B8100BB657D /* FeedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FeedViewController.h; path = ViewControllers/FeedViewController.h; sourceTree = "<group>"; };
 		645E24D918CD4B8100BB657D /* FeedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FeedViewController.m; path = ViewControllers/FeedViewController.m; sourceTree = "<group>"; };
 		645E24DB18CD4B9100BB657D /* SearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchViewController.h; sourceTree = "<group>"; };
 		645E24DC18CD4B9100BB657D /* SearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchViewController.m; sourceTree = "<group>"; };
+		645E24E618CD5FA900BB657D /* Helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Helper.h; path = Utility/Helper.h; sourceTree = "<group>"; };
+		645E24E718CD5FA900BB657D /* Helper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Helper.m; path = Utility/Helper.m; sourceTree = "<group>"; };
+		647F721418CEA0ED00741C45 /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = User.h; path = Models/User.h; sourceTree = "<group>"; };
+		647F721518CEA0ED00741C45 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = User.m; path = Models/User.m; sourceTree = "<group>"; };
+		647F721718CEA10300741C45 /* Feed.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Feed.h; path = Models/Feed.h; sourceTree = "<group>"; };
+		647F721818CEA10300741C45 /* Feed.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Feed.m; path = Models/Feed.m; sourceTree = "<group>"; };
 		64AF2BCA18CAD2B0006106D7 /* MiniatureTwitter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MiniatureTwitter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		64AF2BCD18CAD2B0006106D7 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		64AF2BCF18CAD2B0006106D7 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -61,8 +66,6 @@
 		64AF2BEE18CAD2B0006106D7 /* MiniatureTwitterTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "MiniatureTwitterTests-Info.plist"; sourceTree = "<group>"; };
 		64AF2BF018CAD2B0006106D7 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		64AF2BF218CAD2B0006106D7 /* MiniatureTwitterTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MiniatureTwitterTests.m; sourceTree = "<group>"; };
-		64AF2BFD18CAD4D8006106D7 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LoginViewController.h; path = ViewControllers/LoginViewController.h; sourceTree = "<group>"; };
-		64AF2BFE18CAD4D8006106D7 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LoginViewController.m; path = ViewControllers/LoginViewController.m; sourceTree = "<group>"; };
 		64AF2C0018CAE2C1006106D7 /* Twitter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Twitter.framework; path = System/Library/Frameworks/Twitter.framework; sourceTree = SDKROOT; };
 		64AF2C0218CAE475006106D7 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		64AF2C0418CAE47C006106D7 /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
@@ -95,6 +98,26 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		645E24E218CD5F7E00BB657D /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				645E24E618CD5FA900BB657D /* Helper.h */,
+				645E24E718CD5FA900BB657D /* Helper.m */,
+			);
+			name = Utility;
+			sourceTree = "<group>";
+		};
+		647F721318CEA0CF00741C45 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				647F721418CEA0ED00741C45 /* User.h */,
+				647F721518CEA0ED00741C45 /* User.m */,
+				647F721718CEA10300741C45 /* Feed.h */,
+				647F721818CEA10300741C45 /* Feed.m */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
 		64AF2BC118CAD2B0006106D7 = {
 			isa = PBXGroup;
 			children = (
@@ -131,6 +154,8 @@
 		64AF2BD318CAD2B0006106D7 /* MiniatureTwitter */ = {
 			isa = PBXGroup;
 			children = (
+				647F721318CEA0CF00741C45 /* Models */,
+				645E24E218CD5F7E00BB657D /* Utility */,
 				64AF2BFC18CAD2BE006106D7 /* ViewControllers */,
 				64AF2BDC18CAD2B0006106D7 /* AppDelegate.h */,
 				64AF2BDD18CAD2B0006106D7 /* AppDelegate.m */,
@@ -172,10 +197,6 @@
 		64AF2BFC18CAD2BE006106D7 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				64AF2BFD18CAD4D8006106D7 /* LoginViewController.h */,
-				64AF2BFE18CAD4D8006106D7 /* LoginViewController.m */,
-				645E24D518CD49A600BB657D /* TabBarController.h */,
-				645E24D618CD49A600BB657D /* TabBarController.m */,
 				645E24D818CD4B8100BB657D /* FeedViewController.h */,
 				645E24D918CD4B8100BB657D /* FeedViewController.m */,
 				645E24DB18CD4B9100BB657D /* SearchViewController.h */,
@@ -279,12 +300,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				645E24D718CD49A600BB657D /* TabBarController.m in Sources */,
 				645E24DA18CD4B8100BB657D /* FeedViewController.m in Sources */,
+				645E24E818CD5FA900BB657D /* Helper.m in Sources */,
+				647F721918CEA10300741C45 /* Feed.m in Sources */,
+				647F721618CEA0ED00741C45 /* User.m in Sources */,
 				64AF2BDE18CAD2B0006106D7 /* AppDelegate.m in Sources */,
 				64AF2BDA18CAD2B0006106D7 /* main.m in Sources */,
 				645E24DD18CD4B9100BB657D /* SearchViewController.m in Sources */,
-				64AF2BFF18CAD4D8006106D7 /* LoginViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

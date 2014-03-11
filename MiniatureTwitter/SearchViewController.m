@@ -23,6 +23,10 @@
     return self;
 }
 
+- (void)loadView{
+    self.view = [[UIView alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    [self.view setBackgroundColor:[UIColor redColor]];
+}
 - (void)viewDidLoad
 {
     [super viewDidLoad];

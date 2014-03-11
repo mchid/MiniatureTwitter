@@ -7,7 +7,11 @@
 //
 
 #import "AppDelegate.h"
-#import "TabBarController.h"
+#import "FeedViewController.h"
+#import "SearchViewController.h"
+#import <Accounts/Accounts.h>
+#import <Social/Social.h>
+
 
 @implementation AppDelegate
 
@@ -17,9 +21,8 @@
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
-    
-    TabBarController *tabController = [[TabBarController alloc] init];
-    [self.window addSubview:tabController.view];
+
+    [self authenticateToTwitterAccount];
     
     return YES;
 }
@@ -50,5 +53,59 @@
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
+
+- (void)authenticateToTwitterAccount {
+    ACAccountStore *account = [[ACAccountStore alloc] init];
+    ACAccountType *accountType = [account
+                                  accountTypeWithAccountTypeIdentifier:ACAccountTypeIdentifierTwitter];
+    
+    [account requestAccessToAccountsWithType:accountType
+                                     options:nil completion:^(BOOL granted, NSError *error)
+     {
+         if (granted == YES)
+         {
+             NSArray *arrayOfAccounts = [account
+                                         accountsWithAccountType:accountType];
+             
+             if ([arrayOfAccounts count] > 0)
+             {
+                 dispatch_async(dispatch_get_main_queue(), ^{
+                      [self setupTabs];
+                 });
+             }
+             else{
+                 //TODO : move the strings to property file
+                 [self showAlert:@"There are no twitter accounts configured. You can add or create a twitter account in settings." title:@"No Twitter Account"];
+             }
+         } else {
+             [self showAlert:@"There are no twitter accounts configured. You can add or create a twitter account in settings." title:@"No Twitter Account"];
+         }
+     }];
+}
+
+
+- (void)setupTabs{
+    FeedViewController *feedController = [[FeedViewController alloc] init];
+    UINavigationController *navFeedController = [[UINavigationController alloc] initWithRootViewController:feedController];
+    [navFeedController.tabBarItem setTitle:@"Feed"];
+    
+    SearchViewController *searchController = [[SearchViewController alloc] init];
+    UINavigationController *navSearchController = [[UINavigationController alloc] initWithRootViewController:searchController];
+    [navSearchController.tabBarItem setTitle:@"Search"];
+    
+    UITabBarController *tabController = [[UITabBarController alloc] init];
+    [tabController setViewControllers:[NSArray arrayWithObjects:navFeedController,navSearchController, nil] animated:YES];
+    [self.window setRootViewController:tabController];
+}
+
+- (void)showAlert:(NSString*)message title:(NSString*)title{
+    dispatch_async(dispatch_get_main_queue(), ^{
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:title message:message delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil];
+        [alert show];
+    });
+}
+
+
+
 
 @end

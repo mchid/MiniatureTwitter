@@ -8,6 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
-@interface FeedViewController : UIViewController
+@interface FeedViewController : UIViewController<UITableViewDataSource,UITableViewDelegate>{
+    NSArray *dataSource;
+    UITableView *feedTableView;
+}
+
+@property (nonatomic,retain) NSArray *dataSource;
 
 @end
