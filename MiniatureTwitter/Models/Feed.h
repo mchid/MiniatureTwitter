@@ -7,7 +7,16 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "User.h"
 
-@interface Feed : NSObject
+@interface Feed : NSObject{
+    NSDate *pubDate;
+    NSString *text;
+    User *user;
+}
+@property (nonatomic,retain) NSDate *pubDate;
+@property (nonatomic,retain) NSString *text;
+@property (nonatomic,retain) User *user;
+
 
 @end

@@ -9,10 +9,10 @@
 #import <UIKit/UIKit.h>
 
 @interface FeedViewController : UIViewController<UITableViewDataSource,UITableViewDelegate>{
-    NSArray *dataSource;
+    NSMutableArray *feedArray;
     UITableView *feedTableView;
 }
 
-@property (nonatomic,retain) NSArray *dataSource;
+@property (nonatomic,retain) NSMutableArray *feedArray;
 
 @end

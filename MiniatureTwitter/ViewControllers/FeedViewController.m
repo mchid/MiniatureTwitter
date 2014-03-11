@@ -9,13 +9,15 @@
 #import "FeedViewController.h"
 #import <Accounts/Accounts.h>
 #import <Social/Social.h>
+#import "Feed.h"
+#import "User.h"
 
 @interface FeedViewController ()
 
 @end
 
 @implementation FeedViewController
-@synthesize dataSource;
+@synthesize feedArray;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -43,6 +45,8 @@
     
     UIBarButtonItem *refreshButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh target:self action:@selector(refreshFeed)];
     [self.navigationItem setLeftBarButtonItems:[NSArray arrayWithObjects:refreshButton, nil] animated:YES];
+    
+    [self refreshFeed];
 }
 
 - (void)viewDidLoad
@@ -99,14 +103,15 @@
                   {
                       NSLog(@"Response : %@",[[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding]);
                       
-                      self.dataSource = [NSJSONSerialization
+                      id dataSource = [NSJSONSerialization
                                          JSONObjectWithData:responseData
                                          options:NSJSONReadingMutableLeaves
                                         error:&error];
+
                       
-                      if (self.dataSource.count != 0) {
+                      if (dataSource) {
                           dispatch_async(dispatch_get_main_queue(), ^{
-                              [feedTableView reloadData];
+                              [self processData:dataSource];
                           });
                       }
                   }];
@@ -117,9 +122,38 @@
      }];
 }
 
+- (void)processData:(id)dataSource{
+    if(!feedArray)
+        feedArray = [[NSMutableArray alloc] init];
+    for(NSDictionary *feedDict in dataSource){
+        Feed *feed = [[Feed alloc] init];
+        [feed setPubDate:[feedDict objectForKey:@"created_at"]];
+        [feed setText:[feedDict objectForKey:@"text"]];
+         
+         NSDictionary *userDict = [feedDict objectForKey:@"user"];
+         
+         User *user = [[User alloc] init];
+         [user setScreenName:[userDict objectForKey:@"screen_name"]];
+         [user setLocation:[userDict objectForKey:@"location"]];
+         [user setDescription:[userDict objectForKey:@"description"]];
+         [user setFollowersCount:[[userDict objectForKey:@"followers_count"] intValue]];
+         [user setFriendsCount:[[userDict objectForKey:@"friends_count"] intValue]];
+         [user setStatusCount:[[userDict objectForKey:@"statuses_count"] intValue]];
+         [user setProfileImageUrl:[userDict objectForKey:@"profile_image_url"]];
+         [user setFollowing:[[userDict objectForKey:@"following"] boolValue]];
+         [user setFollowRequestSent:[[userDict objectForKey:@"follow_request_sent"] boolValue]];
+         
+         [feed setUser:user];
+        
+        [self.feedArray addObject:feed];
+         
+    }
+    [feedTableView reloadData];
+}
+
 #pragma UITableView Datasource methods
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return dataSource.count;
+    return feedArray.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -129,8 +163,8 @@
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
     }
     
-        NSDictionary *feed = (NSDictionary *)[self.dataSource objectAtIndex:indexPath.row];
-        cell.textLabel.text = [feed objectForKey:@"text"];
+       Feed *feed = [self.feedArray objectAtIndex:indexPath.row];
+        cell.textLabel.text = [feed text];
 
     return cell;
 }

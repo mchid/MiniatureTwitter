@@ -9,5 +9,8 @@
 #import "User.h"
 
 @implementation User
+@synthesize screenName, location, description;
+@synthesize followersCount, friendsCount, statusCount;
+@synthesize profileImageUrl, following, followRequestSent;
 
 @end
