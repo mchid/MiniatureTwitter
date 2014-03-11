@@ -44,7 +44,6 @@
 		64AF2BE918CAD2B0006106D7 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64AF2BD118CAD2B0006106D7 /* UIKit.framework */; };
 		64AF2BF118CAD2B0006106D7 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 64AF2BEF18CAD2B0006106D7 /* InfoPlist.strings */; };
 		64AF2BF318CAD2B0006106D7 /* MiniatureTwitterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 64AF2BF218CAD2B0006106D7 /* MiniatureTwitterTests.m */; };
-		64AF2C0118CAE2C1006106D7 /* Twitter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64AF2C0018CAE2C1006106D7 /* Twitter.framework */; };
 		64AF2C0318CAE475006106D7 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64AF2C0218CAE475006106D7 /* Social.framework */; };
 		64AF2C0518CAE47C006106D7 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64AF2C0418CAE47C006106D7 /* Accounts.framework */; };
 /* End PBXBuildFile section */
@@ -141,7 +140,6 @@
 				647F725818CEC3DC00741C45 /* SystemConfiguration.framework in Frameworks */,
 				64AF2C0518CAE47C006106D7 /* Accounts.framework in Frameworks */,
 				64AF2C0318CAE475006106D7 /* Social.framework in Frameworks */,
-				64AF2C0118CAE2C1006106D7 /* Twitter.framework in Frameworks */,
 				64AF2BD018CAD2B0006106D7 /* CoreGraphics.framework in Frameworks */,
 				64AF2BD218CAD2B0006106D7 /* UIKit.framework in Frameworks */,
 				64AF2BCE18CAD2B0006106D7 /* Foundation.framework in Frameworks */,
