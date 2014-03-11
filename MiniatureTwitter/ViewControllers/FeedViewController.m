@@ -11,6 +11,7 @@
 #import <Social/Social.h>
 #import "Feed.h"
 #import "User.h"
+#import "FeedCell.h"
 
 @interface FeedViewController ()
 
@@ -151,21 +152,44 @@
     [feedTableView reloadData];
 }
 
+- (CGFloat)getHeight:(Feed*)feed{
+    NSString *screenName = [[feed user] screenName];
+    UIFont *boldFont = [UIFont boldSystemFontOfSize:16.0];
+    CGRect nameRect = [screenName boundingRectWithSize:CGSizeMake(260,100)
+                                               options:NSStringDrawingUsesLineFragmentOrigin
+                                            attributes:@{NSFontAttributeName:boldFont}
+                                               context:nil];
+    
+    
+    NSString *textFeed = [feed text];
+    UIFont *font = [UIFont systemFontOfSize:14.0];
+    CGRect textRect = [textFeed boundingRectWithSize:CGSizeMake(260,1000)
+                                             options:NSStringDrawingUsesLineFragmentOrigin
+                                          attributes:@{NSFontAttributeName:font}
+                                             context:nil];
+    return nameRect.size.height + textRect .size.height+5;
+}
+
 #pragma UITableView Datasource methods
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     return feedArray.count;
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    Feed *feed = [self.feedArray objectAtIndex:indexPath.row];
+    return [self getHeight:feed];
+}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"identifier"];
+    FeedCell *cell = [tableView dequeueReusableCellWithIdentifier:@"identifier"];
     if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"identifier"];
+        cell = [[FeedCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"identifier"];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
     }
     
-       Feed *feed = [self.feedArray objectAtIndex:indexPath.row];
-        cell.textLabel.text = [feed text];
-
+    Feed *feed = [self.feedArray objectAtIndex:indexPath.row];
+    [cell setUpContents:feed];
+    
     return cell;
 }
 
