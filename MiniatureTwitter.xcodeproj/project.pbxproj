@@ -32,6 +32,7 @@
 		647F725418CEC2B100741C45 /* UIWebView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 647F724318CEC2B100741C45 /* UIWebView+AFNetworking.m */; };
 		647F725818CEC3DC00741C45 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 647F725718CEC3DC00741C45 /* SystemConfiguration.framework */; };
 		647F725A18CEC3FE00741C45 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 647F725918CEC3FE00741C45 /* MobileCoreServices.framework */; };
+		647F725D18CEC5D800741C45 /* StatsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 647F725C18CEC5D800741C45 /* StatsViewController.m */; };
 		64AF2BCE18CAD2B0006106D7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64AF2BCD18CAD2B0006106D7 /* Foundation.framework */; };
 		64AF2BD018CAD2B0006106D7 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64AF2BCF18CAD2B0006106D7 /* CoreGraphics.framework */; };
 		64AF2BD218CAD2B0006106D7 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64AF2BD118CAD2B0006106D7 /* UIKit.framework */; };
@@ -111,6 +112,8 @@
 		647F725518CEC3B400741C45 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		647F725718CEC3DC00741C45 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		647F725918CEC3FE00741C45 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		647F725B18CEC5D700741C45 /* StatsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StatsViewController.h; path = ViewControllers/StatsViewController.h; sourceTree = "<group>"; };
+		647F725C18CEC5D800741C45 /* StatsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StatsViewController.m; path = ViewControllers/StatsViewController.m; sourceTree = "<group>"; };
 		64AF2BCA18CAD2B0006106D7 /* MiniatureTwitter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MiniatureTwitter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		64AF2BCD18CAD2B0006106D7 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		64AF2BCF18CAD2B0006106D7 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -329,6 +332,8 @@
 				645E24D918CD4B8100BB657D /* FeedViewController.m */,
 				645E24DB18CD4B9100BB657D /* SearchViewController.h */,
 				645E24DC18CD4B9100BB657D /* SearchViewController.m */,
+				647F725B18CEC5D700741C45 /* StatsViewController.h */,
+				647F725C18CEC5D800741C45 /* StatsViewController.m */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -438,6 +443,7 @@
 				647F724F18CEC2B100741C45 /* UIAlertView+AFNetworking.m in Sources */,
 				647F724518CEC2B100741C45 /* AFHTTPRequestOperationManager.m in Sources */,
 				647F721D18CEAB5F00741C45 /* FeedCell.m in Sources */,
+				647F725D18CEC5D800741C45 /* StatsViewController.m in Sources */,
 				645E24E818CD5FA900BB657D /* Helper.m in Sources */,
 				647F725118CEC2B100741C45 /* UIImageView+AFNetworking.m in Sources */,
 				647F724618CEC2B100741C45 /* AFHTTPSessionManager.m in Sources */,

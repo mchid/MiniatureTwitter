@@ -8,9 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@interface FeedViewController : UIViewController<UITableViewDataSource,UITableViewDelegate>{
+@interface FeedViewController : UITableViewController<UITableViewDataSource,UITableViewDelegate>{
     NSMutableArray *feedArray;
-    UITableView *feedTableView;
+    UIActivityIndicatorView *activityIndicator;
 }
 
 @property (nonatomic,retain) NSMutableArray *feedArray;

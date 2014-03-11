@@ -12,6 +12,7 @@
 #import "Feed.h"
 #import "User.h"
 #import "FeedCell.h"
+#import "StatsViewController.h"
 
 @interface FeedViewController ()
 
@@ -29,16 +30,10 @@
     return self;
 }
 
-- (void)loadView{
-    self.view = [[UIView alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    [self.view setBackgroundColor:[UIColor blueColor]];
+- (void)viewDidLoad{
+     [super viewDidLoad];
     
-    
-    feedTableView = [[UITableView alloc] initWithFrame:CGRectMake(0,0,[self.view frame].size.width,[self.view frame].size.height-49)];
-    [feedTableView setDelegate:self];
-    [feedTableView setDataSource:self];
-    [self.view addSubview:feedTableView];
-    
+    self.title = @"Timeline";
     
     UIBarButtonItem *statusButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCompose target:self action:@selector(showNewStatusView)];
     [self.navigationItem setRightBarButtonItems:[NSArray arrayWithObjects:statusButton, nil] animated:YES];
@@ -47,13 +42,21 @@
     UIBarButtonItem *refreshButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh target:self action:@selector(refreshFeed)];
     [self.navigationItem setLeftBarButtonItems:[NSArray arrayWithObjects:refreshButton, nil] animated:YES];
     
+    
+    UIRefreshControl *refreshControl = [[UIRefreshControl alloc] init];
+    [refreshControl addTarget:self action:@selector(refreshFeed)
+             forControlEvents:UIControlEventValueChanged];
+    refreshControl.attributedTitle = [[NSAttributedString alloc] initWithString:@"Refreshing Timeline..."];
+    self.refreshControl = refreshControl;
+    
+    activityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
+    [activityIndicator setFrame:[self.view bounds]];
+    [self.view addSubview:activityIndicator];
+    [activityIndicator setHidesWhenStopped:YES];
+    [activityIndicator startAnimating];
+    [activityIndicator setBackgroundColor:[UIColor colorWithRed:0.5 green:0.5 blue:0.5 alpha:0.5]];
+    
     [self refreshFeed];
-}
-
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-	// Do any additional setup after loading the view.
 }
 
 - (void)didReceiveMemoryWarning
@@ -124,6 +127,10 @@
 }
 
 - (void)processData:(id)dataSource{
+    
+    [self.refreshControl endRefreshing];
+    [activityIndicator stopAnimating];
+    
     if(!feedArray)
         feedArray = [[NSMutableArray alloc] init];
     for(NSDictionary *feedDict in dataSource){
@@ -149,7 +156,7 @@
         [self.feedArray addObject:feed];
          
     }
-    [feedTableView reloadData];
+    [self.tableView reloadData];
 }
 
 - (CGFloat)getHeight:(Feed*)feed{
@@ -184,7 +191,7 @@
     FeedCell *cell = [tableView dequeueReusableCellWithIdentifier:@"identifier"];
     if (cell == nil) {
         cell = [[FeedCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"identifier"];
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        cell.selectionStyle = UITableViewCellSelectionStyleBlue;
     }
     
     Feed *feed = [self.feedArray objectAtIndex:indexPath.row];
@@ -192,5 +199,14 @@
     
     return cell;
 }
+
+#pragma UITableView Delegate methods
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    StatsViewController *statsController = [[StatsViewController alloc] initWithFeed:[feedArray objectAtIndex:indexPath.row]];
+    [self.navigationController pushViewController:statsController animated:YES];
+}
+
 
 @end
