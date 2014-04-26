@@ -2,108 +2,78 @@
 //  FeedCell.m
 //  MiniatureTwitter
 //
-//  Created by Muthu Chidambaram on 3/10/14.
+//  Created by Muthu Chidambaram on 4/21/14.
 //  Copyright (c) 2014 Muthu Chidambaram. All rights reserved.
 //
 
 #import "FeedCell.h"
-#import "Feed.h"
+#import "Tweet.h"
+
+#define USER_NAME_FONT_SIZE 18.0
+#define TWEET_FONT_SIZE 12.0
+#define  X_OFFSET 5.0
+#define Y_OFFSET 3.0
+#define MAX_WIDTH 310
+#define MAX_HEIGHT 1000
 
 @implementation FeedCell
-@synthesize imageView,feedNameLabel,feedTextLabel,profileUrlString;
+@synthesize tweetUserNameLabel, tweetTextLabel, height;
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
-        self.imageView = [[UIImageView alloc] initWithFrame:CGRectMake(3,3,50,50)];
-        [self addSubview:imageView];
         
-        imageView.clipsToBounds = YES;
-        CALayer *imageLayer = [imageView layer];
-        [imageLayer setMasksToBounds:YES];
-        [imageLayer setCornerRadius:10.0];
+        self.tweetUserNameLabel = [[UILabel alloc] initWithFrame:CGRectZero];
+        [tweetUserNameLabel setFont:[UIFont boldSystemFontOfSize:USER_NAME_FONT_SIZE]];
+        [self addSubview:tweetUserNameLabel];
         
-        
-        self.feedNameLabel = [[UILabel alloc] initWithFrame:CGRectMake(55,0,265,30)];
-        [feedNameLabel setFont:[UIFont boldSystemFontOfSize:16.0]];
-        [self addSubview:feedNameLabel];
-        
-        self.feedTextLabel = [[UILabel alloc] initWithFrame:CGRectMake(55,30,265,100)];
-        [feedTextLabel setFont:[UIFont systemFontOfSize:14.0]];
-        [self addSubview:feedTextLabel];
+        self.tweetTextLabel = [[UILabel alloc] initWithFrame:CGRectZero];
+        [tweetTextLabel setFont:[UIFont systemFontOfSize:TWEET_FONT_SIZE]];
+        [self addSubview:tweetTextLabel];
     }
     return self;
 }
 
-- (void)setUpContents:(Feed*)feed{
-    NSString *screenName = [[feed user] screenName];
-    UIFont *boldFont = [UIFont boldSystemFontOfSize:16.0];
-    CGRect nameRect = [screenName boundingRectWithSize:CGSizeMake(260,100)
+- (void)setUpContents:(Tweet*)tweet{
+    NSString *screenName = [[tweet user] screenName];
+    UIFont *boldFont = [UIFont boldSystemFontOfSize:USER_NAME_FONT_SIZE];
+    CGRect nameRect = [screenName boundingRectWithSize:CGSizeMake(MAX_WIDTH,1000)
                                          options:NSStringDrawingUsesLineFragmentOrigin
                                       attributes:@{NSFontAttributeName:boldFont}
                                          context:nil];
-    CGRect sampleRect = [@"sample" boundingRectWithSize:CGSizeMake(260,100)
+    CGRect sampleRect = [@"sample" boundingRectWithSize:CGSizeMake(MAX_WIDTH,MAX_HEIGHT)
                                                  options:NSStringDrawingUsesLineFragmentOrigin
                                               attributes:@{NSFontAttributeName:boldFont}
                                                  context:nil];
     
-    nameRect.origin = CGPointMake(60,3);
-    [feedNameLabel setFrame:nameRect];
-    [feedNameLabel setNumberOfLines:(nameRect.size.height/sampleRect.size.height)];
-    [feedNameLabel setText:screenName];
+    nameRect.origin = CGPointMake(X_OFFSET,Y_OFFSET);
+    [tweetUserNameLabel setFrame:nameRect];
+    [tweetUserNameLabel setNumberOfLines:(nameRect.size.height/sampleRect.size.height)];
+    [tweetUserNameLabel setText:screenName];
     
-    NSString *textFeed = [feed text];
-    UIFont *font = [UIFont systemFontOfSize:14.0];
-    CGRect textRect = [textFeed boundingRectWithSize:CGSizeMake(260,1000)
+    NSString *textFeed = [tweet text];
+    UIFont *font = [UIFont systemFontOfSize:TWEET_FONT_SIZE];
+    CGRect textRect = [textFeed boundingRectWithSize:CGSizeMake(MAX_WIDTH,MAX_HEIGHT)
                                                options:NSStringDrawingUsesLineFragmentOrigin
                                             attributes:@{NSFontAttributeName:font}
                                                context:nil];
-    CGRect sampleTextRect = [@"sample" boundingRectWithSize:CGSizeMake(260,1000)
+    CGRect sampleTextRect = [@"sample" boundingRectWithSize:CGSizeMake(MAX_WIDTH,MAX_HEIGHT)
                                              options:NSStringDrawingUsesLineFragmentOrigin
                                           attributes:@{NSFontAttributeName:font}
                                              context:nil];
-    textRect.origin = CGPointMake(60,nameRect.size.height);
-    [feedTextLabel setFrame:textRect];
-    [feedTextLabel setNumberOfLines:(textRect.size.height/sampleTextRect.size.height)];
-    [feedTextLabel setText:textFeed];
-    
-    NSURL *url = [NSURL URLWithString:[[feed user] profileImageUrl]];
-    NSURLRequest *request = [NSURLRequest requestWithURL:url];
-    UIImage *placeholderImage = [UIImage imageNamed:@"placeholder"];
-    
-    [imageView setImageWithURLRequest:request
-                          placeholderImage:placeholderImage
-                                   success:nil failure:nil];
+    textRect.origin = CGPointMake(X_OFFSET,nameRect.size.height+Y_OFFSET);
+    [tweetTextLabel setFrame:textRect];
+    [tweetTextLabel setNumberOfLines:(textRect.size.height/sampleTextRect.size.height)];
+    [tweetTextLabel setText:textFeed];
+
 }
-
-
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated
 {
     [super setSelected:selected animated:animated];
     
-    // Configure the view for the selected state
 }
 
 
--(void)loadImageFromCache:(NSString*)_avatarUrlString{
-//    NSData *imageData = [[Global sharedGlobals] getImageFromCache:_avatarUrlString];
-//    if(imageData){
-//        [self imageDownloaded:imageData];
-//    }
-}
-
--(void)loadImage:(NSString*)_avatarUrlString {
-//    NSData *imageData = [[ServerOperation sharedManager] downloadImage:_avatarUrlString delegate:self callBack:@selector(imageDownloaded:)];
-//    if(imageData){
-//        [self imageDownloaded:imageData];
-//    }
-}
-
--(void)imageDownloaded:(NSData*)imageData{
-//    NSLog(@"Callback in PostCell after downloading image");
-//    UIImage *avatar = [UIImage imageWithData:imageData];
-//    [self.imageView setImage:avatar];
-}
 @end

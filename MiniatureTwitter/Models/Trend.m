@@ -1,14 +1,15 @@
 //
-//  User.m
+//  Trend.m
 //  MiniatureTwitter
 //
 //  Created by Muthu Chidambaram on 4/21/14.
 //  Copyright (c) 2014 Muthu Chidambaram. All rights reserved.
 //
 
-#import "User.h"
+#import "Trend.h"
 
-@implementation User
-@synthesize screenName, profileImageUrl;
+@implementation Trend
+
+@synthesize name, query;
 
 @end
